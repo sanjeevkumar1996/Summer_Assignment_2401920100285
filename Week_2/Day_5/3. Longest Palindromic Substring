@@ -8,7 +8,7 @@ public:
         }
         if(s[i]==s[j])
         {
-            return solve(s,i+1,j-1);
+            return sol(s,i+1,j-1);
         }
         return false;
     }
@@ -22,7 +22,7 @@ public:
             {
                 if(sol(s,i,j)==true)
                 {
-                    if(j-i+1>maxlen)
+                    if(j-i+1>ml)
                     {
                         ml=j-i+1;
                         p=i;
