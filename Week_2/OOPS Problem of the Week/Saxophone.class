@@ -1,0 +1,15 @@
+#ifndef SAXOPHONE_H
+#define SAXOPHONE_H
+#include<iostream>
+#include "Playable.h"
+namespace music{
+namespace wind{
+class Saxophone : public Playable {
+public:
+       void play() override
+       std::cout<<"Saxophone is playing..."<<std::endl;
+}
+};
+}
+}
+#endif
