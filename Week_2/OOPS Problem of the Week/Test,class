@@ -1,0 +1,18 @@
+#include "Veena.h"
+#include "Saxophone.h"
+using namespace music::string_instruments;
+using namespace music::wind;
+int main(){
+    Veena v;
+    v.play();
+    Saxophone s;
+    s.play();
+    Playable* p;
+    p=new Veena();
+    p->play();
+    delete p;
+    p=new Saxphone();
+    p->play();
+    delete p;
+    return 0;
+}
