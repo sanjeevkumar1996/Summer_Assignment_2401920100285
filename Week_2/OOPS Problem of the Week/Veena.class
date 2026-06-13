@@ -1,0 +1,15 @@
+#ifndef VEENA_H
+#define VEENA_H
+#include<iostream>
+#include "Playable.h"
+namespace music{
+namespace string_instruments{
+class Veena : public Playable {
+public:
+       void play() override
+       std::cout<<"Veena is playing..."<<std::endl;
+}
+};
+}
+}
+#endif
