@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+class Compartment {
+public:
+    virtual std::string notice() = 0;
+    virtual ~Compartment() {} 
+};
+class FirstClass : public Compartment {
+public:
+    std::string notice() override {
+        return "First Class Compartment: Comfortable journey for premium passengers";
+    }
+};
+class Ladies : public Compartment {
+public:
+    std::string notice() override {
+        return "Ladies Compartment: Open for all passengers.";
+    }
+};
+class General : public Compartment {
+public:
+    std::string notice() override {
+        return "General Compartment: Open for all passengers.";
+    }
+};
+class Luggage : public Compartment {
+public:
+    std::string notice() override {
+        return "Luggage Compartment: Reserved for luggage and parcels.";
+    }
+};
+int main() {
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    Compartment* compartments[10];
+    for (int i = 0; i < 10; i++) {
+        int random = (std::rand() % 4) + 1;
+        switch (random) {
+            case 1: compartments[i] = new FirstClass();
+             break;
+            case 2: compartments[i] = new Ladies();   
+             break;
+            case 3: compartments[i] = new General(); 
+              break;
+            case 4: compartments[i] = new Luggage();   
+              break;
+        }
+    }
+    std::cout << "Railway Compartments Notices:\n\n";
+    for (int i = 0; i < 10; i++) {
+        std::cout << "Compartment " << (i + 1) << ": " << compartments[i]->notice() << "\n";
+    }
+    for (int i = 0; i < 10; i++) {
+        delete compartments[i];
+    }
+
+    return 0;
+}
