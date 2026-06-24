@@ -1,0 +1,13 @@
+class Solution {
+    bool isvalid(TreeNode* root, long long maxim, long long m)
+    {
+        if(root==NULL) return true;
+        if(root->val >= maxim || root->val<= m) return false;
+        return isvalid(root->left, root->val, m) && 
+        isvalid(root->right, maxim, root->val);
+    }
+public:
+    bool isValidBST(TreeNode* root) {
+        return isvalid(root, LLONG_MAX, LLONG_MIN);
+    }
+};
