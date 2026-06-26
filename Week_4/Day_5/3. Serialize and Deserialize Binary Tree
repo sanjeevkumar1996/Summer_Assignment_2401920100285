@@ -1,0 +1,49 @@
+class Codec {
+public:
+    string serialize(TreeNode* root) {
+        if (!root) {
+            return "";
+        }
+        queue<TreeNode*> p;
+        p.push(root);
+        string a;
+        while (!p.empty()) {
+            TreeNode* c = p.front();
+            p.pop();
+            if (!c) {
+                a += "#,";
+                continue;
+            }
+            a += to_string(c->val) + ",";
+            p.push(c->left);
+            p.push(c->right);
+        }
+        return a;
+    }
+    TreeNode* deserialize(string data) {
+        if (data.empty()) {
+            return NULL;
+        }
+        stringstream ss(data);
+        string s;
+        getline(ss, s, ',');
+        TreeNode* root = new TreeNode(stoi(s));
+        queue<TreeNode*> p;
+        p.push(root);
+        while (!p.empty()) {
+            TreeNode* c = p.front();
+            p.pop();
+            getline(ss, s, ',');
+            if (s != "#") {
+                c->left = new TreeNode(stoi(s));
+                p.push(c->left);
+            }
+            getline(ss, s, ',');
+            if (s != "#") {
+                c->right = new TreeNode(stoi(s));
+                p.push(c->right);
+            }
+        }
+        return root;
+    }
+};
